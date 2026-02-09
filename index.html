@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-tebeka | Premium Legal Research Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav
+        style="background: var(--glass-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 1rem 0; position: fixed; top: 0; width: 100%; z-index: 100;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 12px; cursor: pointer;"
+                onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <img src="../assets/logo.png" alt="Meedish Legal" style="height: 40px;">
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary-navy);">e-tebeka</span>
+            </div>
+            <div style="display: flex; gap: 24px; align-items: center;" class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#research" class="nav-link">Research</a>
+                <a href="#subscriptions" class="nav-link">Subscriptions</a>
+                <button onclick="openModal()" class="btn btn-primary" id="loginBtn">Client Login</button>
+            </div>
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home"
+        style="padding: 160px 0 100px; background: linear-gradient(135deg, #0D47A1 0%, #1A237E 100%); color: white; text-align: center;">
+        <div class="container" style="animation: fadeIn 0.8s ease-out;">
+            <h1 style="font-size: 3.5rem; margin-bottom: 24px; line-height: 1.1;">Advanced Legal Research.<br><span
+                    style="color: var(--accent-gold);">e-tebeka.</span></h1>
+            <p style="font-size: 1.2rem; color: #BBDEFB; max-width: 700px; margin: 0 auto 40px;">Access the most
+                comprehensive judicial database with real-time updates, decision analysis, and AI-powered legal
+                assistance.</p>
+            <div class="hero-btn-group" style="display: flex; gap: 16px; justify-content: center;">
+                <a href="#research" class="btn btn-accent" style="padding: 16px 40px; font-size: 1.1rem;">Start
+                    Researching</a>
+                <a href="#subscriptions" class="btn"
+                    style="border: 2px solid white; color: white; padding: 16px 40px;">View Plans</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Grid -->
+    <div class="container" style="margin-top: -60px;">
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+            <div class="card">
+                <i class="fas fa-search" style="font-size: 2rem; color: var(--primary-navy); margin-bottom: 20px;"></i>
+                <h3 style="margin-bottom: 12px;">Case Tracking</h3>
+                <p style="color: var(--text-grey);">Real-time updates on case status, hearings, and judgments across all
+                    federal courts.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-pie"
+                    style="font-size: 2rem; color: var(--primary-navy); margin-bottom: 20px;"></i>
+                <h3 style="margin-bottom: 12px;">Analytics</h3>
+                <p style="color: var(--text-grey);">Historical decision trends and "Who Won" data for better strategic
+                    planning.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-robot" style="font-size: 2rem; color: var(--primary-navy); margin-bottom: 20px;"></i>
+                <h3 style="margin-bottom: 12px;">AI Assistant</h3>
+                <p style="color: var(--text-grey);">Intelligent guidance on court procedures and documentation
+                    requirements.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research Section -->
+    <section id="research">
+        <div class="container">
+            <header style="margin-bottom: 40px; text-align: center;">
+                <h1 style="color: var(--primary-navy); margin-bottom: 8px;">Judicial Research Portal</h1>
+                <p style="color: var(--text-grey);">Search and analyze federal court cases with detailed resolution
+                    data.</p>
+            </header>
+
+            <div class="card" style="margin-bottom: 40px; padding: 24px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 16px; align-items: end;">
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Court
+                            Level</label>
+                        <select style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #CFD8DC;">
+                            <option>All Federal Courts</option>
+                            <option>Federal Supreme Court</option>
+                            <option>Federal High Court</option>
+                            <option>First Instance Court</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Bench</label>
+                        <select style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #CFD8DC;">
+                            <option>Select Bench</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Search
+                            Keywords</label>
+                        <input type="text" placeholder="Case #, Parties, or Summary..."
+                            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #CFD8DC;">
+                    </div>
+                    <button class="btn btn-primary" style="height: 46px; padding: 0 32px;">Search Records</button>
+                </div>
+            </div>
+
+            <div class="data-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Case Number</th>
+                            <th>Parties</th>
+                            <th>Bench</th>
+                            <th>Status</th>
+                            <th>Who Won</th>
+                            <th>Date Resolved</th>
+                            <th>Decision Compared</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Archive Case (Always Free) -->
+                        <tr>
+                            <td><strong>FHC/202/24</strong></td>
+                            <td>Daniel Tekle vs Zemen Bank</td>
+                            <td>Lideta Civil</td>
+                            <td><span class="badge badge-success">Resolved</span></td>
+                            <td>Defendant</td>
+                            <td>Oct 12, 2024</td>
+                            <td style="font-size: 0.85rem; color: var(--text-grey);">Standard employment dispute
+                                resolution.</td>
+                        </tr>
+                        <!-- Current Case (Always Locked) -->
+                        <tr class="premium-row">
+                            <td><strong>FSC/1023/24</strong> <span class="badge badge-warning"
+                                    style="font-size: 0.6rem;">Recent</span></td>
+                            <td>Abebe Kebede vs Ministry of Finance</td>
+                            <td>Main Bench</td>
+                            <td><span class="badge badge-success">Resolved</span></td>
+                            <td class="locked-data">Plaintiff</td>
+                            <td class="locked-data">Jan 15, 2026</td>
+                            <td class="locked-data"><span class="badge badge-premium"><i class="fas fa-lock"></i>
+                                    Premium Access</span></td>
+                        </tr>
+                        <!-- Another Current Case -->
+                        <tr class="premium-row">
+                            <td><strong>FIC/115/24</strong> <span class="badge badge-warning"
+                                    style="font-size: 0.6rem;">Recent</span></td>
+                            <td>Martha Girma vs City Administration</td>
+                            <td>Arada</td>
+                            <td><span class="badge badge-warning">Ongoing</span></td>
+                            <td class="locked-data">-</td>
+                            <td class="locked-data">-</td>
+                            <td class="locked-data"><span class="badge badge-premium"><i class="fas fa-lock"></i>
+                                    Premium Access</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="login-overlay" style="padding: 40px; text-align: center; border-top: 1px solid #eee;">
+                    <p style="color: var(--text-grey); margin-bottom: 20px;">Detailed resolution data is available for
+                        subscribers only.</p>
+                    <button onclick="openModal()" class="btn btn-primary">Login to View More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscriptions Section -->
+    <section id="subscriptions"
+        style="background-color: #fcfcfc; border-top: 1px solid #eee; border-bottom: 1px solid #eee;">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: var(--primary-navy); font-size: 2.5rem; margin-bottom: 16px;">Choose Your Plan</h2>
+            <p style="color: var(--text-grey); font-size: 1.1rem; margin-bottom: 60px;">Unlock professional legal
+                insights and advanced decision analytics.</p>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto;">
+                <div class="card">
+                    <h3>Basic</h3>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 20px 0;">$0<span
+                            style="font-size: 1rem;">/mo</span></div>
+                    <ul
+                        style="list-style: none; text-align: left; margin-bottom: 30px; display: grid; gap: 12px; font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Public Case Search</li>
+                        <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Basic Status Updates</li>
+                    </ul>
+                    <button class="btn btn-primary"
+                        style="width: 100%; height: 44px; background: white; border: 2px solid var(--primary-navy); color: var(--primary-navy);">Free
+                        Forever</button>
+                </div>
+
+                <div class="card" style="border: 2px solid var(--accent-gold); transform: scale(1.05);">
+                    <h3>Professional</h3>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 20px 0;">$29<span
+                            style="font-size: 1rem;">/mo</span></div>
+                    <ul
+                        style="list-style: none; text-align: left; margin-bottom: 30px; display: grid; gap: 12px; font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Everything in Basic</li>
+                        <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> "Who Won" Analysis</li>
+                        <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Decision Comparison</li>
+                    </ul>
+                    <button onclick="handleSubscribe('Professional')" class="btn btn-primary"
+                        style="width: 100%; height: 44px;">Subscribe Now</button>
+                </div>
+
+                <div class="card">
+                    <h3>Enterprise</h3>
+                    <div style="font-size: 2rem; font-weight: 700; margin: 20px 0;">$99<span
+                            style="font-size: 1rem;">/mo</span></div>
+                    <ul
+                        style="list-style: none; text-align: left; margin-bottom: 30px; display: grid; gap: 12px; font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Multi-user Dashboard</li>
+                        <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> API Access</li>
+                    </ul>
+                    <button onclick="handleContact()" class="btn btn-primary"
+                        style="width: 100%; height: 44px; background: white; border: 2px solid var(--primary-navy); color: var(--primary-navy);">Contact
+                        Us</button>
+                </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: white; padding: 80px 0 40px; border-top: 1px solid #eee;">
+        <div class="container">
+            <div class="footer-grid"
+                style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px;">
+                <!-- Brand Section -->
+                <div class="footer-col">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                        <img src="../assets/logo.png" alt="Meedish Legal" style="height: 40px;">
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary-navy);">Meedish
+                            Legal</span>
+                    </div>
+                    <p style="color: var(--text-grey); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+                        Empowering legal professionals with data-driven insights and advanced judicial research tools
+                        across all Ethiopian federal courts.
+                    </p>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4 style="margin-bottom: 24px; color: var(--primary-navy);">Resources</h4>
+                    <ul style="list-style: none; display: grid; gap: 12px;">
+                        <li><a href="#home" class="footer-link">Home</a></li>
+                        <li><a href="#research" class="footer-link">Case Research</a></li>
+                        <li><a href="#subscriptions" class="footer-link">Pricing Plans</a></li>
+                        <li><a href="#" class="footer-link">Court Calendars</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support -->
+                <div class="footer-col">
+                    <h4 style="margin-bottom: 24px; color: var(--primary-navy);">Support</h4>
+                    <ul style="list-style: none; display: grid; gap: 12px;">
+                        <li><a href="#" class="footer-link">Help Center</a></li>
+                        <li><a href="#" class="footer-link">Documentation</a></li>
+                        <li><a href="#" class="footer-link">API Access</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-col">
+                    <h4 style="margin-bottom: 24px; color: var(--primary-navy);">Contact Us</h4>
+                    <ul style="list-style: none; display: grid; gap: 16px; font-size: 0.9rem; color: var(--text-grey);">
+                        <li style="display: flex; gap: 12px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary-navy); margin-top: 4px;"></i>
+                            Lideta, Addis Ababa,<br>Ethiopia
+                        </li>
+                        <li style="display: flex; gap: 12px;">
+                            <i class="fas fa-envelope" style="color: var(--primary-navy);"></i>
+                            info@meedishlegal.com
+                        </li>
+                        <li style="display: flex; gap: 12px;">
+                            <i class="fas fa-phone" style="color: var(--primary-navy);"></i>
+                            +251 911 000 000
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div
+                style="border-top: 1px solid #eee; padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 e-tebeka Portal. All rights
+                    reserved.</p>
+                <div style="display: flex; gap: 24px;">
+                    <a href="#" class="footer-link" style="font-size: 0.85rem;">Terms of Service</a>
+                    <a href="#" class="footer-link" style="font-size: 0.85rem;">Security</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="margin-bottom: 24px; color: var(--primary-navy);">Client Login</h2>
+            <form id="authForm" onsubmit="handleAuth(event)">
+                <div id="nameGroup" class="form-group" style="display: none;">
+                    <label for="regName">Full Name</label>
+                    <input type="text" id="regName" placeholder="Lawyer Name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" id="authSubmitBtn" class="btn btn-primary"
+                    style="width: 100%; height: 50px; margin-top: 10px;">Sign
+                    In</button>
+                <p id="authToggleText"
+                    style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: var(--text-grey);">
+                    Don't have an account? <a href="javascript:void(0)" onclick="toggleAuthMode()"
+                        style="color: var(--primary-navy); font-weight: 600;">Register</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button -->
+    <div style="position: fixed; bottom: 30px; right: 30px; z-index: 100;">
+        <button onclick="toggleChat()" class="btn btn-primary"
+            style="border-radius: 50%; width: 60px; height: 60px; box-shadow: var(--shadow-strong);">
+            <i class="fas fa-robot" style="font-size: 1.5rem;"></i>
+        </button>
+    </div>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="chat-widget">
+        <div class="chat-header">
+            <div>
+                <h4 style="margin: 0;">Legal Assistant</h4>
+                <small style="opacity: 0.8;">AI-Powered Guide</small>
+            </div>
+            <i class="fas fa-times" style="cursor: pointer;" onclick="toggleChat()"></i>
+        </div>
+        <div
+            style="background: #FFF9C4; padding: 8px; font-size: 0.7rem; text-align: center; color: #F57F17; font-weight: 600;">
+            Disclaimer: AI cannot provide legal advice.
+        </div>
+        <div id="chatMessages" class="chat-messages">
+            <div class="message message-bot">
+                Hello! I am your Meedish Legal Assistant. How can I help you understand court procedures today?
+            </div>
+        </div>
+        <div id="typingIndicator" class="typing-indicator">Assistant is thinking...</div>
+        <form id="chatForm" class="chat-input-area" onsubmit="handleChat(event)">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Ask a question..." autocomplete="off">
+            <button type="submit" class="btn btn-primary"
+                style="padding: 0; width: 40px; height: 40px; border-radius: 50%; min-width: 40px;">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+
+</html>

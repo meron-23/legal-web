@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Research | Meedish Legal Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav style="background: var(--bg-white); border-bottom: 1px solid #eee; padding: 1rem 0;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="../assets/logo.png" alt="Meedish Legal" style="height: 40px;">
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary-navy);">Meedish Legal</span>
+            </div>
+            <div style="display: flex; gap: 24px; align-items: center;">
+                <a href="index.html" style="text-decoration: none; color: var(--text-grey);">Home</a>
+                <a href="search.html"
+                    style="text-decoration: none; color: var(--primary-navy); font-weight: 600;">Research</a>
+                <a href="subscribe.html" style="text-decoration: none; color: var(--text-grey);">Subscriptions</a>
+                <a href="#" class="btn btn-primary">Client Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 40px 24px;">
+        <header style="margin-bottom: 40px;">
+            <h1 style="color: var(--primary-navy); margin-bottom: 8px;">Judicial Research Portal</h1>
+            <p style="color: var(--text-grey);">Search and analyze federal court cases with detailed resolution data.
+            </p>
+        </header>
+
+        <section class="card" style="margin-bottom: 40px; padding: 24px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 16px; align-items: end;">
+                <div>
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Court
+                        Level</label>
+                    <select style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #CFD8DC;">
+                        <option>All Federal Courts</option>
+                        <option>Federal Supreme Court</option>
+                        <option>Federal High Court</option>
+                        <option>First Instance Court</option>
+                    </select>
+                </div>
+                <div>
+                    <label
+                        style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Bench</label>
+                    <select style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #CFD8DC;">
+                        <option>Select Bench</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">Search
+                        Keywords</label>
+                    <input type="text" placeholder="Case #, Parties, or Summary..."
+                        style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #CFD8DC;">
+                </div>
+                <button class="btn btn-primary" style="height: 46px; padding: 0 32px;">Search Records</button>
+            </div>
+        </section>
+
+        <div class="data-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Case Number</th>
+                        <th>Parties (Plaintiff vs Defendant)</th>
+                        <th>Bench</th>
+                        <th>Status</th>
+                        <th>Who Won</th>
+                        <th>Date Resolved</th>
+                        <th>Decision Compared</th>
+                    </tr>
+                </thead>
+                <tbody id="case-results">
+                    <!-- Standard Row -->
+                    <tr>
+                        <td><strong>FSC/1023/24</strong></td>
+                        <td>Abebe Kebede vs Ministry of Finance</td>
+                        <td>Main Bench</td>
+                        <td><span class="badge badge-success">Resolved</span></td>
+                        <td>Plaintiff</td>
+                        <td>Jan 15, 2026</td>
+                        <td><span class="badge badge-premium"><i class="fas fa-lock"></i> Premium Access</span></td>
+                    </tr>
+                    <!-- Premium Row Example -->
+                    <tr style="background:rgba(255, 215, 0, 0.03)">
+                        <td><strong>FHC/505/23</strong></td>
+                        <td>Ethio Telecom vs Global Trading Ltd</td>
+                        <td>Lideta Civil</td>
+                        <td><span class="badge badge-success">Resolved</span></td>
+                        <td>Defendant</td>
+                        <td>Dec 20, 2025</td>
+                        <td style="font-size: 0.85rem; color: var(--text-grey);">Consistency with 2024 tax reform
+                            confirmed...</td>
+                    </tr>
+                    <tr>
+                        <td><strong>FIC/991/24</strong></td>
+                        <td>Sara Mohammed vs Dawit Tadesse</td>
+                        <td>Lideta</td>
+                        <td><span class="badge badge-warning">Ongoing</span></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><span class="badge badge-premium"><i class="fas fa-lock"></i> Premium Access</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div style="position: fixed; bottom: 30px; right: 30px;">
+        <button class="btn btn-primary"
+            style="border-radius: 50%; width: 60px; height: 60px; box-shadow: var(--shadow-strong);">
+            <i class="fas fa-robot" style="font-size: 1.5rem;"></i>
+        </button>
+    </div>
+</body>
+
+</html>

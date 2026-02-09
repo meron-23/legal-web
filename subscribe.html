@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe | Meedish Legal Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav style="background: var(--bg-white); border-bottom: 1px solid #eee; padding: 1rem 0;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="../assets/logo.png" alt="Meedish Legal" style="height: 40px;">
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--primary-navy);">Meedish Legal</span>
+            </div>
+            <div style="display: flex; gap: 24px;">
+                <a href="index.html" style="text-decoration: none; color: var(--text-grey);">Home</a>
+                <a href="search.html" style="text-decoration: none; color: var(--text-grey);">Research</a>
+                <a href="subscribe.html"
+                    style="text-decoration: none; color: var(--primary-navy); font-weight: 600;">Subscriptions</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 80px 24px; text-align: center;">
+        <h1 style="color: var(--primary-navy); font-size: 3rem; margin-bottom: 16px;">Choose Your Plan</h1>
+        <p style="color: var(--text-grey); font-size: 1.2rem; margin-bottom: 60px;">Unlock professional legal insights
+            and advanced decision analytics.</p>
+
+        <div
+            style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto;">
+            <!-- Free Plan -->
+            <div class="card" style="display: flex; flex-direction: column;">
+                <h3 style="margin-bottom: 8px;">Basic</h3>
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 24px;">$0<span
+                        style="font-size: 1rem; color: var(--text-muted);">/mo</span></div>
+                <ul
+                    style="list-style: none; text-align: left; margin-bottom: 40px; display: grid; gap: 12px; color: var(--text-grey);">
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Public Case Search</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Basic Status Updates</li>
+                    <li><i class="fas fa-times" style="color: var(--text-muted);"></i> Detailed Decision Metrics</li>
+                    <li><i class="fas fa-times" style="color: var(--text-muted);"></i> Decision Comparison</li>
+                </ul>
+                <button class="btn btn-primary"
+                    style="margin-top: auto; background: white; border: 2px solid var(--primary-navy); color: var(--primary-navy);">Get
+                    Started</button>
+            </div>
+
+            <!-- Professional Plan -->
+            <div class="card"
+                style="display: flex; flex-direction: column; border: 2px solid var(--accent-gold); position: relative; transform: scale(1.05);">
+                <div
+                    style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-gold); color: var(--primary-navy); padding: 4px 16px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;">
+                    MOST POPULAR</div>
+                <h3 style="margin-bottom: 8px;">Professional</h3>
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 24px;">$29<span
+                        style="font-size: 1rem; color: var(--text-muted);">/mo</span></div>
+                <ul
+                    style="list-style: none; text-align: left; margin-bottom: 40px; display: grid; gap: 12px; color: var(--text-grey);">
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> All Basic Features</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> "Who Won" Analysis</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Date Resolved Data</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Decision Comparison</li>
+                </ul>
+                <button class="btn btn-primary" style="margin-top: auto;">Subscribe Now</button>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="card" style="display: flex; flex-direction: column;">
+                <h3 style="margin-bottom: 8px;">Enterprise</h3>
+                <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 24px;">$99<span
+                        style="font-size: 1rem; color: var(--text-muted);">/mo</span></div>
+                <ul
+                    style="list-style: none; text-align: left; margin-bottom: 40px; display: grid; gap: 12px; color: var(--text-grey);">
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> All Pro Features</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Multi-user Dashboard</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> API Access</li>
+                    <li><i class="fas fa-check" style="color: var(--primary-navy);"></i> Legal Consulting (1hr)</li>
+                </ul>
+                <button class="btn btn-primary"
+                    style="margin-top: auto; background: white; border: 2px solid var(--primary-navy); color: var(--primary-navy);">Contact
+                    Sales</button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

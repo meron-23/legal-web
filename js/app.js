@@ -108,38 +108,74 @@ function lockPremium() {
 }
 
 // Fetch Live Cases from Firestore
-async function fetchCases() {
+async function fetchCases(filterText = "") {
     const tableBody = document.querySelector('tbody');
     try {
-        const q = query(collection(db, 'cases'), orderBy('caseDate', 'desc'), limit(10));
+        const q = query(collection(db, 'cases'), orderBy('createdAt', 'desc'), limit(20));
         const querySnapshot = await getDocs(q);
 
-        if (!querySnapshot.empty) {
-            tableBody.innerHTML = ''; // Clear mock data
-            querySnapshot.forEach((doc) => {
-                const data = doc.data();
-                const row = document.createElement('tr');
-                const isRecent = (Date.now() - data.caseDate.toDate()) < (30 * 24 * 60 * 60 * 1000);
+        tableBody.innerHTML = ''; // Clear previous data
 
-                row.innerHTML = `
-                    <td><strong>${data.caseNumber || 'N/A'}</strong> ${isRecent ? '<span class="badge badge-warning" style="font-size: 0.6rem;">Recent</span>' : ''}</td>
-                    <td>${data.parties || 'N/A'}</td>
-                    <td>${data.bench || 'N/A'}</td>
-                    <td><span class="badge badge-${data.status === 'Resolved' ? 'success' : 'warning'}">${data.status || 'Ongoing'}</span></td>
-                    <td class="${isRecent ? 'locked-data' : ''}">${data.whoWon || '-'}</td>
-                    <td class="${isRecent ? 'locked-data' : ''}">${data.caseDate ? data.caseDate.toDate().toLocaleDateString() : '-'}</td>
-                    <td class="${isRecent ? 'locked-data' : ''}">${data.decisionCompared || '<span class="badge badge-premium"><i class="fas fa-lock"></i> Premium</span>'}</td>
-                `;
-                tableBody.appendChild(row);
-            });
+        let found = false;
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
 
-            // Re-apply unblur if logged in
-            if (currentUser) unlockPremium();
+            // Search Filtering (Local for performance)
+            if (filterText) {
+                const searchLower = filterText.toLowerCase();
+                const matches =
+                    (data.caseFileNo && data.caseFileNo.toLowerCase().includes(searchLower)) ||
+                    (data.plaintiff && data.plaintiff.toLowerCase().includes(searchLower)) ||
+                    (data.defendant && data.defendant.toLowerCase().includes(searchLower)) ||
+                    (data.summary && data.summary.toLowerCase().includes(searchLower));
+                if (!matches) return;
+            }
+
+            found = true;
+            const row = document.createElement('tr');
+
+            // Calculate recency based on createdAt (Firestore Timestamp)
+            const createdDate = data.createdAt ? data.createdAt.toDate() : new Date();
+            const isRecent = (Date.now() - createdDate) < (30 * 24 * 60 * 60 * 1000);
+
+            row.innerHTML = `
+                <td><strong>${data.caseFileNo || 'N/A'}</strong> ${isRecent ? '<span class="badge badge-warning" style="font-size: 0.6rem;">Recent</span>' : ''}</td>
+                <td>${data.plaintiff || 'N/A'} vs ${data.defendant || 'N/A'}</td>
+                <td>${data.bench || 'N/A'}</td>
+                <td><span class="badge badge-success">Resolved</span></td>
+                <td class="${isRecent ? 'locked-data' : ''}">${data.whoWon || '-'}</td>
+                <td class="${isRecent ? 'locked-data' : ''}">${data.dateResolved || '-'}</td>
+                <td class="${isRecent ? 'locked-data' : ''}" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                    ${data.decisionCompared || '<span class="badge badge-premium"><i class="fas fa-lock"></i> Premium</span>'}
+                </td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        if (!found) {
+            tableBody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 40px; color: var(--text-grey);">No matching records found.</td></tr>';
         }
+
+        // Re-apply unblur if logged in
+        if (currentUser) unlockPremium();
+
     } catch (error) {
         console.error('Error fetching cases:', error);
+        tableBody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: red;">Error connection to database.</td></tr>';
     }
 }
+
+// Global Search Handler
+window.handleSearch = function () {
+    const input = document.getElementById('searchInput');
+    const keyword = input.value.trim();
+    const submitBtn = document.querySelector('button[onclick="handleSearch()"]');
+
+    submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+    fetchCases(keyword).finally(() => {
+        submitBtn.innerHTML = 'Search Records';
+    });
+};
 
 // Initial Fetch
 fetchCases();
